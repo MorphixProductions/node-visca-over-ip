@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"description": "A visca-over-ip implementation for NodeJS",
 	"main": "dist/Main.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MorphixProductions/node-visca-over-ip"
+	},
 	"scripts": {},
 	"author": "Mees van der Wijk",
 	"license": "ISC",
