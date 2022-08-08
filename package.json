@@ -1,9 +1,9 @@
 {
 	"name": "visca-over-ip",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A visca-over-ip implementation for NodeJS",
 	"main": "dist/ViscaOverIP.js",
-	"types": "dist/ViscaOverIP.js.map",
+	"types": "dist/ViscaOverIP.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/MorphixProductions/node-visca-over-ip"
