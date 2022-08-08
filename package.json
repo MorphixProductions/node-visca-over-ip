@@ -1,6 +1,6 @@
 {
 	"name": "visca-over-ip",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A visca-over-ip implementation for NodeJS",
 	"main": "dist/Main.js",
 	"repository": {
