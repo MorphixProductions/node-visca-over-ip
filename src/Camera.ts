@@ -121,7 +121,7 @@ export class ViscaCamera {
 			this._scheduleUpdate();
 		} else {
 			command.sentAt = Date.now();
-			console.log(`SENDING VISCA COMMAND: ${command.description}`);
+			// console.log(`SENDING VISCA COMMAND: ${command.description}`);
 			this.sendDirect(command);
 		}
 	}
