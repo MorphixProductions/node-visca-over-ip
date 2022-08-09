@@ -2,6 +2,6 @@
 //
 // Created by MorphixProductions - Mees van der Wijk <3
 
-export * from './camera';
-export * from './command';
-export * from './constants';
+export * from './Camera';
+export * from './Command';
+export * from './Constants';
