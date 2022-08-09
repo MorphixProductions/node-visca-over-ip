@@ -1,6 +1,6 @@
 {
 	"name": "visca-over-ip",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"description": "A visca-over-ip implementation for NodeJS",
 	"main": "dist/ViscaOverIP.js",
 	"types": "dist/ViscaOverIP.d.ts",
@@ -13,9 +13,8 @@
 	},
 	"author": "Mees van der Wijk",
 	"license": "ISC",
-	"dependencies": {},
 	"devDependencies": {
-		"@types/node": "^18.6.3"
+		"@types/node": "^18.6.5"
 	},
 	"keywords": [
 		"visca-over-ip",
