@@ -42,12 +42,22 @@ var ViscaCamera = /** @class */ (function () {
         var _this = this;
         this.ip = ip;
         this.port = port;
+        this.connected = true;
         this.inquiryCallback = {};
         this.inquiryQueue = [];
         this.sentCommands = [];
         this.commandQueue = [];
         this.events = {};
         this.reconnect();
+        this.client.on('connect', function () {
+            if (_this.connected == false) {
+                _this.connected = true;
+                _this.inquiryReady = true;
+                _this.commandReady = true;
+                if (_this.events.connected)
+                    _this.events.connected();
+            }
+        });
         this.client.on('close', function () {
             _this.connected = false;
             if (_this.events.closed)
@@ -60,7 +70,6 @@ var ViscaCamera = /** @class */ (function () {
         });
         this.client.on('error', function (err) {
             _this.connected = false;
-            console.log(err);
             if (_this.events.closed)
                 _this.events.error(err);
         });
@@ -80,15 +89,8 @@ var ViscaCamera = /** @class */ (function () {
             this.events[eventType](data);
     };
     ViscaCamera.prototype.reconnect = function () {
-        var _this = this;
         this.client = dgram.createSocket('udp4');
-        this.client.connect(this.port, this.ip, function () {
-            _this.connected = true;
-            _this.inquiryReady = true;
-            _this.commandReady = true;
-            if (_this.events.connected)
-                _this.events.connected();
-        });
+        this.client.connect(this.port, this.ip, function () { });
     };
     //==================== Commands ====================
     ViscaCamera.prototype.sendDirect = function (data) {
@@ -126,7 +128,6 @@ var ViscaCamera = /** @class */ (function () {
         }
         else {
             command.sentAt = Date.now();
-            // console.log(`SENDING VISCA COMMAND: ${command.description}`);
             this.sendDirect(command);
         }
     };
@@ -197,14 +198,11 @@ var ViscaCamera = /** @class */ (function () {
                 message = "VISCA ERROR: command failed";
                 break;
         }
-        // console.log(
-        // 	`CAMERA ERROR: command socket: ${viscaCommand.socket}, message: ${message}\nRECEIVED: ${viscaCommand.toString()}`
-        // );
         if (this.inquiryCallback[socketKey]) {
             this.inquiryCallback[socketKey]._handle('error', new Error(message));
         }
         else {
-            this._handle('error', new Error(' Camera buffer missing'));
+            this._handle('error', new Error(message));
         }
         delete this.inquiryCallback[socketKey];
         this._update();
