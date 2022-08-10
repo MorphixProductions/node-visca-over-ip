@@ -117,8 +117,9 @@ export class ViscaCamera {
 			if (this.commandReady) {
 				this.sentCommands.push(command); // not in a buffer until we get ACK
 			} else {
-				this.commandQueue.push(command);
-				queued = true;
+				// this.commandQueue.push(command);
+				this.sentCommands.push(command); // not in a buffer until we get ACK
+				// queued = true;
 			}
 		}
 

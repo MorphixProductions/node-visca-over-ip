@@ -190,6 +190,14 @@ var ViscaCommand = /** @class */ (function () {
     // x increases rightward
     // y increases downward!!
     ViscaCommand.cameraPanTilt = function (xSpeed, ySpeed, xMode, yMode) {
+        if (xMode == undefined)
+            xMode = xSpeed > 0 ? 0x02 : xSpeed < 0 ? 0x01 : 0x03;
+        if (yMode == undefined)
+            yMode = ySpeed > 0 ? 0x02 : ySpeed < 0 ? 0x01 : 0x03;
+        if (xSpeed < 0)
+            xSpeed = xSpeed * -1;
+        if (ySpeed < 0)
+            ySpeed = ySpeed * -1;
         var subCommand = [
             Constants_1.Constants.OP_PAN_DRIVE,
             xSpeed,
@@ -628,7 +636,7 @@ var ViscaCommand = /** @class */ (function () {
             Constants_1.Constants.CAM_SHUTTER,
             resetupdown
         ];
-        if (directvalue > -1) {
+        if (directvalue > -1 && directvalue != null) {
             subCommand = __spreadArray([
                 Constants_1.Constants.CAM_SHUTTER_DIRECT
             ], __read(utils.i2v(directvalue)));
@@ -669,7 +677,7 @@ var ViscaCommand = /** @class */ (function () {
             Constants_1.Constants.CAM_IRIS,
             resetupdown
         ];
-        if (directvalue > -1) {
+        if (directvalue > -1 && directvalue != null) {
             subCommand = __spreadArray([
                 Constants_1.Constants.CAM_IRIS_DIRECT
             ], __read(utils.i2v(directvalue)));
@@ -701,7 +709,7 @@ var ViscaCommand = /** @class */ (function () {
             Constants_1.Constants.CAM_APERTURE,
             resetupdown
         ];
-        if (directvalue > -1) {
+        if (directvalue > -1 && directvalue != null) {
             subCommand = __spreadArray([
                 Constants_1.Constants.CAM_APERTURE_DIRECT
             ], __read(utils.i2v(directvalue)));

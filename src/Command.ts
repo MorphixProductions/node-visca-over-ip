@@ -172,7 +172,13 @@ export class ViscaCommand {
 	// YY = y mode 01 (dec), 02 (inc), 03 (stop)
 	// x increases rightward
 	// y increases downward!!
-	static cameraPanTilt(xSpeed: number, ySpeed: number, xMode: number, yMode: number) {
+	static cameraPanTilt(xSpeed: number, ySpeed: number, xMode?: number, yMode?: number) {
+		if (xMode == undefined) xMode = xSpeed > 0 ? 0x02 : xSpeed < 0 ? 0x01 : 0x03;
+		if (yMode == undefined) yMode = ySpeed > 0 ? 0x02 : ySpeed < 0 ? 0x01 : 0x03;
+
+		if (xSpeed < 0) xSpeed = xSpeed * -1;
+		if (ySpeed < 0) ySpeed = ySpeed * -1;
+
 		let subCommand = [
 			C.OP_PAN_DRIVE,
 			xSpeed,
@@ -646,7 +652,7 @@ export class ViscaCommand {
 			C.CAM_SHUTTER,
 			resetupdown
 		];
-		if (directvalue > -1) {
+		if (directvalue > -1 && directvalue != null) {
 			subCommand = [
 				C.CAM_SHUTTER_DIRECT,
 				...utils.i2v(directvalue)
@@ -687,7 +693,7 @@ export class ViscaCommand {
 			C.CAM_IRIS,
 			resetupdown
 		];
-		if (directvalue > -1) {
+		if (directvalue > -1 && directvalue != null) {
 			subCommand = [
 				C.CAM_IRIS_DIRECT,
 				...utils.i2v(directvalue)
@@ -719,7 +725,7 @@ export class ViscaCommand {
 			C.CAM_APERTURE,
 			resetupdown
 		];
-		if (directvalue > -1) {
+		if (directvalue > -1 && directvalue != null) {
 			subCommand = [
 				C.CAM_APERTURE_DIRECT,
 				...utils.i2v(directvalue)

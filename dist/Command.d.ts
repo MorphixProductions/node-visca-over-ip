@@ -25,7 +25,7 @@ export declare class ViscaCommand {
     static cameraPresetReset(preset?: number): ViscaCommand;
     static cameraPresetSet(preset?: number): ViscaCommand;
     static cameraPresetRecall(preset?: number): ViscaCommand;
-    static cameraPanTilt(xSpeed: number, ySpeed: number, xMode: number, yMode: number): ViscaCommand;
+    static cameraPanTilt(xSpeed: number, ySpeed: number, xMode?: number, yMode?: number): ViscaCommand;
     static cameraPanTiltDirect(xSpeed: number, ySpeed: number, x: number, y: number, relative?: boolean): ViscaCommand;
     static cameraPanTiltHome(): ViscaCommand;
     static cameraPanTiltReset(): ViscaCommand;
