@@ -302,7 +302,7 @@ export class ViscaCommand {
 		let data = stopfarnear;
 		if (speed > -1 && stopfarnear != C.DATA_RESET) data = (data << 8) + (speed & 0b111);
 		let subCommand = [
-			C.CAM_ZOOM,
+			C.CAM_FOCUS,
 			data
 		];
 
