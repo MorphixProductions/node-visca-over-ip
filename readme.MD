@@ -7,9 +7,9 @@ This is an almost complete visca-over-ip implementation that can be used to cont
 This project is heavily inspired by [Utoputopiantools visca implementation](https://github.com/utopiantools/node-visca). A part of the command handling was originally created by utopian and restructured/rewrited by me. Thanks!
 
 ## Roadmap
-Currently I'm on quite a tight schedule for a couple more days, for that reason I currently only implemented the features we use (setters). In a couple days I will implement the inquire commands and add complete documentation. `written on 8th of august 2022`
+The inquire commands and add complete documentation are in the pipeline but I'm just really busy. Feel free to create a pull request!
 
-## Structer
+## Structure
 This implementation consists of two classes, a `ViscaCamera` class and a `ViscaCommand` class. The `ViscaCamera` class does the communication with the camera and handles the packets/commands, and `ViscaCommand` is a wrapper around a visca command on which you can tie events. 
 
 ## Example
